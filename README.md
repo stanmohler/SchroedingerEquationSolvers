@@ -11,29 +11,31 @@ The instructions below assume you want to run on a GPU, but you don't need to.
 ### Set up your environment
 
 1. Install Miniconda.  You can get it at [https://docs.conda.io/en/latest/miniconda.html](https://docs.conda.io/en/latest/miniconda.html).  
-2. Browse to [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/).  
-3. Select your OS, "Conda" and "Python".
-4. See the CUDA "compute platform" versions compatible with PyTorch.  
-5. Also note the recommended `conda install` command.  You will use it soon.  
-6. In a terminal, try the command below.
+2. Open an Anaconda terminal.  Run the following command:
+```
+        conda update -n base -c defaults conda
+```
+3. Browse to [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/).  
+4. Select your OS, "Conda" and "Python".
+5. See the CUDA "compute platform" versions compatible with PyTorch.  
+6. Also note the recommended `conda install` command.  You will use it soon.  
+7. In a terminal, try the command below.
 ```
         nvcc --version
 ```
-7. Did the command work AND provide a CUDA version identified in the PyTorch site above?  (E.g., "CUDA compilation tools, release 11.7")  If so, proceed to step 9.
-8. Otherwise, you need to install a version of the CUDA Toolkit identified in the PyTorch site above.  
+8. Did the command work AND provide a CUDA version identified in the PyTorch site above?  (E.g., "CUDA compilation tools, release 11.7")  If so, proceed to step 10.
+9. Otherwise, you need to install a version of the CUDA Toolkit identified in the PyTorch site above.  
    1. Browse to [https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads).  
    2. Find a CUDA version identified by the PyTorch site above, maybe the highest compatible one.  You might need to scroll down and click on **Archive of Previous CUDA Releases**.   
    3. Download it.
    4. Install it.
-9. Run the `conda create` command based on the `conda install` command identified for you in Step 5 above, **but with the following additions:**
+10. Run the conda commands below.  The `conda create` command below is based on the `conda install` command identified for you in Step 6 above.  But **replace the 11.7 below with your CUDA version.**
 ```
-        -c conda-forge pandas matplotlib pycuda notebook holoviews
+        conda create -n qmtorch pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
+        conda activate qmtorch
+        conda install -c conda-forge pandas matplotlib pycuda notebook holoviews
 ```
-        For me, the complete command was:
-```
-        conda create -n qmtorch -c pytorch -c nvidia -c conda-forge pytorch torchvision torchaudio pytorch-cuda=11.7 pandas matplotlib pycuda notebook holoviews
-```
-10. Then run the commands below to launch Python and verify that you can import PyTorch, and see your GPUs.  
+11. Then run the commands below to launch Python and verify that you can import PyTorch, and see your GPUs.  
 ```
         python
         >>> import torch
