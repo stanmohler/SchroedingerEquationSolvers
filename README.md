@@ -57,4 +57,4 @@ The instructions below assume you want to run on a GPU, but you don't need to.
         conda activate qmtorch
         jupyter notebook
 ```
-3. Run all the Notebook cells.
+3. Run all the Notebook cells.  
