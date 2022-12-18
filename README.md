@@ -26,10 +26,11 @@ The instructions below assume you want to run on a GPU, but you don't need to.
 8. Did the command work AND provide a CUDA version identified in the PyTorch site above?  (E.g., "CUDA compilation tools, release 11.7")  If so, proceed to step 10.
 9. Otherwise, you need to install a version of the CUDA Toolkit identified in the PyTorch site above.  
    1. Browse to [https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads).  
-   2. Find a CUDA version identified by the PyTorch site above, maybe the highest compatible one.  You might need to scroll down and click on **Archive of Previous CUDA Releases**.   
+   2. Find a CUDA version identified by the PyTorch site above, maybe the highest compatible one.  You might need to scroll down and click on **Archive of Previous CUDA Releases**.
    3. Download it.
    4. Install it.
-10. Run the conda commands below.  The `conda create` command below is based on the `conda install` command identified for you in Step 6 above.  But **replace the 11.7 below with your CUDA version.**
+10. Run the conda commands below.  The `conda create` command below is based on the `conda install` command identified for you in Step 6 above.  
+But **replace the 11.7 below with your CUDA version.**
 ```
         conda create -n qmtorch pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
         conda activate qmtorch
