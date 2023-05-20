@@ -40,8 +40,8 @@ But **replace the 11.7 below with your CUDA version.**
 ```
         python
         >>> import torch
-		>>> torch.cuda.is_available()
-		True
+        >>> torch.cuda.is_available()
+        True
         >>> torch.cuda.get_device_name(0)
         'NVIDIA GeForce RTX 3050 Ti Laptop GPU'
         >>> availableBytes, totalBytes = torch.cuda.mem_get_info()
