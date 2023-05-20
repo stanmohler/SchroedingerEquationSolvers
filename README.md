@@ -23,7 +23,7 @@ The instructions below assume you want to run on a GPU, but you don't need to.
 ```
         nvcc --version
 ```
-8. Did the command work AND provide a CUDA version identified in the PyTorch site above?  (E.g., "CUDA compilation tools, release 11.7")  If so, proceed to step 10.
+8. Did the command work AND provide a CUDA version identified in the PyTorch site above?  (E.g., "Cuda compilation tools, release 11.7, V11.7.64")  If so, proceed to step 10.
 9. Otherwise, you need to install a version of the CUDA Toolkit identified in the PyTorch site above.  
    1. Browse to [https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads).  
    2. Find a CUDA version identified by the PyTorch site above, maybe the highest compatible one.  You might need to scroll down and click on **Archive of Previous CUDA Releases**.
@@ -34,24 +34,21 @@ But **replace the 11.7 below with your CUDA version.**
 ```
         conda create -n qmtorch pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
         conda activate qmtorch
-        conda install -c conda-forge pandas matplotlib pycuda notebook holoviews
+        conda install -c conda-forge pandas matplotlib notebook holoviews
 ```
 11. Then run the commands below to launch Python and verify that you can import PyTorch, and see your GPUs.  
 ```
         python
         >>> import torch
-        >>> import pycuda.driver as cuda
-        >>> import pycuda.autoinit
-        >>> cuda.init()
-        >>> torch.cuda.current_device()
-        0
-        >>> cuda.Device(0).name()
-        'NVIDIA GeForce RTX 2060'
-        >>> availableBytes, totalBytes = cuda.mem_get_info()
+		>>> torch.cuda.is_available()
+		True
+        >>> torch.cuda.get_device_name(0)
+        'NVIDIA GeForce RTX 3050 Ti Laptop GPU'
+        >>> availableBytes, totalBytes = torch.cuda.mem_get_info()
         >>> availableBytes/1e9    # show available video memory (GB)
-        5.391187968
+        3.463761102
         >>> totalBytes/1e9        # show total video memory (GB)
-        6.442123264
+        4.294508544
 ```
 ### Run the code
 1. Launch an Anaconda terminal.  
