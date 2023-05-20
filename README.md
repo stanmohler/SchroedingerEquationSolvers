@@ -11,7 +11,7 @@ The instructions below assume you want to run on a GPU, but you don't need to.
 ### Set up your environment
 
 1. Install Miniconda.  You can get it at [https://docs.conda.io/en/latest/miniconda.html](https://docs.conda.io/en/latest/miniconda.html).  
-2. Open an Anaconda terminal.  Run the following command:
+2. Open an Anaconda terminal.  (On Windows, WSL probably won't work.  Use a Windows Anaconda terminal.)  Run the following command:
 ```
         conda update -n base -c defaults conda
 ```
